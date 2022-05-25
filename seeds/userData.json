@@ -1,17 +1,17 @@
 [
   {
-    "name": "Sal",
-    "email": "sal@hotmail.com",
+    "username": "twobob",
+    "email": "twobob@gmail",
     "password": "password12345"
   },
   {
-    "name": "Lernantino",
-    "email": "lernantino@gmail.com",
+    "username": "Techwizard",
+    "email": "techo@gmail.com",
     "password": "password12345"
   },
   {
-    "name": "Amiko",
-    "email": "amiko2k20@aol.com",
+    "username": "Lovetech",
+    "email": "lovetech@gmail.com",
     "password": "password12345"
   }
 ]

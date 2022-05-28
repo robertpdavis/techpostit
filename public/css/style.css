@@ -1,0 +1,161 @@
+/* Weather Pro Style Sheet */
+
+/* Root variables for colour scheme */
+:root {
+  --body-background-col: #ffffff;
+  --header-background-left: #14abb2;
+  --header-background-right: #233eb6;
+  --header-colour: #ffffff;
+  --nav-colour: #ffffff;
+  --hr-colour: #a9a9a9;
+  --border-colour: #000000;
+  --wcard-bg-colour: #172b38;
+  --uvindex-colour: #ffffff;
+}
+
+html {
+  line-height: 1.5;
+}
+
+body {
+  background-color: var(--body-background-col);
+  width: 90%;
+  margin: auto;
+}
+
+/* Gradient for the header */
+header {
+  background: linear-gradient(to right, var(--header-background-left) 0%, var(--header-background-right) 100%);
+  min-height: 4rem;
+  text-align: center;
+  color: var(--header-colour);
+  vertical-align: middle;
+  margin-top: 1rem;
+}
+
+header h1 {
+  margin-bottom: 0.5rem;
+}
+
+nav {
+  margin: 1rem 0rem;
+  font-size: 1.5rem;
+}
+
+header h1 a {
+  color: var(--header-colour);
+  padding-left: 1rem;
+}
+
+nav a {
+  color: var(--header-colour);
+  padding-left: 0.3rem;
+  padding-right: 0.3rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: bolder;
+}
+
+h2 {
+  font-size: 2.0rem;
+}
+
+h3 {
+  font-size: 1.75rem;
+  font-weight: bolder;
+}
+
+h4 {
+  font-size: 1.5rem;
+  font-weight: bolder;
+}
+
+h5 {
+  font-size: 1.25rem;
+  font-weight: bolder;
+}
+
+p {
+  margin-bottom: 0.5rem;
+}
+
+hr {
+  height: 0.2rem;
+  border-color: var(--hr-colour);
+  background-color: var(--hr-colour);
+}
+
+.row {
+  margin-top: 0.5rem;
+}
+
+.card-header h3 {
+  display: inline-block;
+}
+
+.card-header span {
+  font-size: 1rem;
+}
+
+.card-body {
+  height: 5rem;
+}
+
+.no-button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: var(--header-colour);
+  text-decoration: none;
+  font-size: 100%;
+}
+
+.no-button:hover {
+  color: #065b83;
+  text-decoration: underline;
+}
+
+.form-input {
+  padding: 0.3rem 0;
+  margin: 0.3rem 0;
+}
+
+@media only screen and (min-width: 768px) {
+
+  body {
+    width: 70%;
+  }
+
+  header {
+    text-align: left;
+    margin-top: 0rem;
+    margin-bottom: 1rem;
+  }
+
+  .container {
+    /* margin-left: 1rem; */
+    margin: auto;
+  }
+
+  .card-header span {
+    float: right;
+  }
+
+  nav a {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}

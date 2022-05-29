@@ -3,7 +3,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Description
-E-server is a Node.js - Express API application for an ecommerce server. It allows for full CRUD functionality (via GET, POST, UPDATE and DELETE) API requests for products, product categories and tags. All data is stored in a mysql database and uses the Seqelize ORM to simplify the database interactions.
+Tech Post It is a Node.js - Express API blogging application. It allows for full CRUD functionality (via GET, POST, UPDATE and DELETE) for posts and POST for users and comments. All data is stored in a mysql database and uses the Seqelize ORM to simplify the database interactions.
 
 
 ## Table of Contents
@@ -16,16 +16,32 @@ E-server is a Node.js - Express API application for an ecommerce server. It allo
 - [Questions](#questions)
 
 ## Installation
-Node.js must be installed. The npm Express, mysql2, sequelize and dotenv packages are also required. Firstly initialise the npm in the directory for the application by typing npm init in the console. The dependencies can be installed by typing npm install. Ensure the package.json and package-lock.json files are included in the directory. You will need to create a new mysql database (ecommerce_db) see db/schema.sql and can populate sample data with node ./seeds/. You will also need to create a .env file for database connection details. Make sure this file is noted in .gitignore.
+Node.js must be installed. Required npm packages:
+* Express
+* mysql2
+* sequelize
+* dotenv
+* express-session 
+* express-session-seqelize
+* expess-handlebars
+* bcrypt
+
+Firstly initialise the npm in the directory for the application by typing npm init in the console. The dependencies can be installed by typing npm install. Ensure the package.json and package-lock.json files are included in the directory. For localhost use, you will need to create a new mysql database (techpostit_db) see db/schema.sql and can populate sample data with node ./seeds/. You will also need to create a .env file for database connection details. Make sure this file is noted in .gitignore.
+
+If installing on Heroku, you will need to create a new app and git push on Heroku. The JAWSDB addon is required and make sure the config/connection.js refers to the process.env.JAWSDB_URL var. You will also need to create a SECRET config var in Heroku for the session secret.
+
+You can use your local repo to seed the database by getting the JAWSDB url details by typing heroku config:get JAWSDB_URL in the console (or via the url) and using that for you seed connection.
 
 File structure of the application:
 ```md
 .
 ├── config/                // contains the sequelize connection.js file
+├── controllers/                // contains the route files
 ├── db/                    // schema for creating database
 ├── models/                // the sequelize database model files
-├── routes/                // contains the API route files
 ├── seeds/                 // contains seed data for the database
+├── utils/                 // authentication and other helpers
+├── views/                 // handlebars layout and view files
 ├── .env.EXAMPLE/          // exmaple env file for the database environmental variables
 ├── .gitignore             // indicates which folders and files Git should ignore
 ├── LICENCE                // licence file
@@ -35,43 +51,25 @@ File structure of the application:
 ```
 
 ## Usage
-Run the server application by typing npm start in the console. The following API routes are then available:
-- /api/products/: GET route to return all products. Returns JSON for all products including product tags.
-- /api/products/id: GET route to retunr single product by id. Returns JSON for the product including product tags.
-- /api/products/: POST route to create product. Returns JSON for created product including product tags.
-- /api/products/id: PUT route to update product. Returns JSON for updated product including product tags.
-- /api/products/id: DELETE route to delete product. Returns 1 if product deleted.
+Run the server application by typing npm start in the console. The following routes are then available:
+homeroutes
+- GET / > home page
+- GET /dashboard > user dashboard page
+- GET /dashboard > user create post page
+- GET /dashboard/view/:id > user view post page (with update and delete options)
+- GET /post/:id > general view post and comments and add comment
+- GET /login > login page
+- GET /signup > sigup page
+api routes
+- POST /user/ > create user
+- POST /user/login/ > login and set session
+- POST /user/logout/ > logout and destrou session
+- POST /post/ > create post
+- POST /post/comment > create comment
+- PUT /post/:id > update post
+- DELETE /post/:id > delete post
 
-The same functionality applies for /api/categories/ and /api/tags/
-
-Product create and update structure:
-```md
-{
-	"product_name": "Basketball",
-	"price": 250.00,
-	"stock": 10,
-	"category_id": 6,
-	"tagIds": [9]
-}
-```
-
-Category create and update structure:
-```md
-{
-	"category_name": "Sporting Goods"
-}
-```
-
-Tag create and update structure:
-```md
-{
-	"tag_name": "Limited Edition"
-}
-```
-
-See this video link for further details on setting up and seeding the database and launching the application : https://drive.google.com/file/d/1ZSVkYp5uIMPVC3JZmzL1WDquDrdhYCST/view
-
-See this video link for further details on using the API (exmaple uses Insomnia) : https://drive.google.com/file/d/10KPAho4PU2nRMWOeT94qNoepmz2WIp-x/view
+Live website is available at Heroku: https://techpostit.herokuapp.com
 
 ## Credits
 Rob Davis Github: [robertpdavis](https://github.com/robertpdavis)

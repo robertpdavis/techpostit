@@ -2,15 +2,8 @@
 const commentFormHandler = async (event) => {
   event.preventDefault();
 
-  console.log("here");
-
   const comment = document.querySelector('#comment').value;
   const postId = document.querySelector('[data-postid]').getAttribute('data-postid');
-
-  const userId = "";
-
-  console.log(comment);
-  console.log(postId);
 
   if (comment && postId) {
     const response = await fetch('/api/post/comment', {

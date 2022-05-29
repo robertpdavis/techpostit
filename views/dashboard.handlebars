@@ -1,15 +1,16 @@
 <!-- Loop over each blog post in the blogs array -->
 {{#if posts.length}}
 {{#if logged_in}}
+<a href="/dashboard/create"><button class="btn btn-primary" type="button">Create Post</button></a>
 {{#each posts as |post| }}
 <div class="row justify-content-between">
   <div class="col-12">
     <div class="card">
       <div class="card-header">
         <h3>
-          <a href="/post/{{post.id}}">{{post.title}}</a>
+          <a href="/dashboard/view/{{post.id}}">{{post.title}}</a>
         </h3>
-        <span>Posted {{format_date post.date_created}}</span>
+        <span class="post-header-span">Posted {{format_date post.date_created}}</span>
       </div>
 
     </div>

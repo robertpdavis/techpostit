@@ -103,7 +103,7 @@ hr {
 }
 
 .card-header h3 {
-  display: inline-block;
+  display: block;
 }
 
 .comment-header {
@@ -115,7 +115,7 @@ hr {
 }
 
 .post-comment-span {
-  float: bottom;
+  /* float: bottom; */
   font-style: italic;
 }
 
@@ -136,6 +136,17 @@ hr {
 .no-button:hover {
   color: #065b83;
   text-decoration: underline;
+}
+
+.post-title-input {
+  width: 100%;
+  min-height: 3rem;
+}
+
+.post-content-input {
+  width: 100%;
+  min-height: 6rem;
+  margin-bottom: 1rem;
 }
 
 .comment-form {
@@ -167,9 +178,13 @@ hr {
     margin-bottom: 1rem;
   }
 
-  .container {
-    /* margin-left: 1rem; */
+  /* .container {
+
     margin: auto;
+  } */
+
+  .card-header h3 {
+    display: inline-block;
   }
 
   .post-header-span {
@@ -179,5 +194,9 @@ hr {
   nav a {
     padding-left: 1rem;
     padding-right: 1rem;
+  }
+
+  .post-title-input {
+    min-width: 50rem;
   }
 }

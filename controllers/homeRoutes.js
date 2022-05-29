@@ -13,6 +13,9 @@ router.get('/', async (req, res) => {
           attributes: ['username'],
         },
       ],
+      where: {
+        is_deleted: false
+      },
       order: [
         ['date_created', 'DESC'],
       ]
@@ -43,7 +46,8 @@ router.get('/dashboard', withAuth, async (req, res) => {
         },
       ],
       where: {
-        user_id: req.session.user_id
+        user_id: req.session.user_id,
+        is_deleted: false,
       },
       order: [
         ['date_created', 'DESC'],
@@ -64,10 +68,70 @@ router.get('/dashboard', withAuth, async (req, res) => {
   }
 });
 
+router.get('/dashboard/create', withAuth, async (req, res) => {
+  try {
+    const pageTitle = 'Dashboard';
+    const option = { "create": true };
+
+    res.render('post', {
+      option,
+      pageTitle,
+      logged_in: req.session.logged_in
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get('/dashboard/view/:id', withAuth, async (req, res) => {
+  try {
+    const postData = await Post.findByPk(req.params.id, {
+      include: [
+        {
+          model: User,
+          attributes: ['username'],
+        },
+      ],
+      where: {
+        user_id: req.session.user_id
+      },
+    });
+    const post = postData.get({ plain: true });
+
+    const commentData = await Comment.findAll({
+      include: [
+        {
+          model: User,
+          attributes: ['username'],
+        },
+      ],
+      where: {
+        post_id: post.id
+      },
+      order: [
+        ['date_created', 'DESC'],
+      ]
+    });
+    const comments = commentData.map((comment) => comment.get({ plain: true }));
+
+    const option = { "view": true };
+    const pageTitle = 'Dashboard';
+
+    res.render('post', {
+      option,
+      post,
+      pageTitle,
+      comments,
+      logged_in: req.session.logged_in
+    });
+
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 router.get('/post/:id', withAuth, async (req, res) => {
   try {
-    const pageTitle = 'Tech Post It';
-
     const postData = await Post.findByPk(req.params.id, {
       include: [
         {
@@ -94,7 +158,9 @@ router.get('/post/:id', withAuth, async (req, res) => {
     });
     const comments = commentData.map((comment) => comment.get({ plain: true }));
 
-    res.render('post-comment', {
+    const pageTitle = 'Tech Post It';
+
+    res.render('comment', {
       post,
       pageTitle,
       comments,

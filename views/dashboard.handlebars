@@ -1,20 +1,22 @@
 <!-- Loop over each blog post in the blogs array -->
-{{#each blogs as |blog| }}
+{{#if posts.length}}
+{{#if logged_in}}
+{{#each posts as |post| }}
 <div class="row justify-content-between">
   <div class="col-12">
     <div class="card">
       <div class="card-header">
         <h3>
-          {{blog.title}}
+          <a href="/post/{{post.id}}">{{post.title}}</a>
         </h3>
-        <span>Posted By {{blog.user.username}} {{format_date blog.date_created}}</span>
+        <span>Posted {{format_date post.date_created}}</span>
       </div>
-      <div class="card-body">
-        <p class="card-text">
-          {{blog.content}}
-        </p>
-      </div>
+
     </div>
   </div>
 </div>
 {{/each}}
+{{/if}}
+{{else}}
+<h2>No posts to display.</h2>
+{{/if}}

@@ -35,6 +35,7 @@ header {
 
 header h1 {
   margin-bottom: 0.5rem;
+  padding-left: 1rem;
 }
 
 nav {
@@ -105,12 +106,21 @@ hr {
   display: inline-block;
 }
 
-.card-header span {
+.comment-header {
+  height: 2rem;
+}
+
+.post-header-span {
   font-size: 1rem;
 }
 
+.post-comment-span {
+  float: bottom;
+  font-style: italic;
+}
+
 .card-body {
-  height: 5rem;
+  height: auto;
 }
 
 .no-button {
@@ -128,9 +138,21 @@ hr {
   text-decoration: underline;
 }
 
-.form-input {
-  padding: 0.3rem 0;
-  margin: 0.3rem 0;
+.comment-form {
+  margin: 0rem;
+}
+
+.comment-label {
+  padding: 0.3rem 0rem;
+  margin: 0rem;
+}
+
+.comment-input {
+  padding: 0.3rem 0rem;
+  margin: 0.3rem 0rem;
+  width: 100%;
+  min-height: 6rem;
+  vertical-align: text-top;
 }
 
 @media only screen and (min-width: 768px) {
@@ -150,7 +172,7 @@ hr {
     margin: auto;
   }
 
-  .card-header span {
+  .post-header-span {
     float: right;
   }
 

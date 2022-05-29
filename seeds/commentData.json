@@ -16,5 +16,11 @@
     "date_created": "2022/05/25",
     "post_id": 3,
     "user_id": 1
+  },
+  {
+    "content": "Sequalize is a great ORM",
+    "date_created": "2022/05/25",
+    "post_id": 3,
+    "user_id": 3
   }
 ]

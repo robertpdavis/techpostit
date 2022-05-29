@@ -16,5 +16,11 @@
     "content": "I really loved learning about ORMs.",
     "date_created": "2022-05-20",
     "user_id": 3
+  },
+  {
+    "title": "Sequelise - Making MYSQL Easy",
+    "content": "Sequelize is a node npm ORM package making mysql database datahandling easy.",
+    "date_created": "2022-05-25",
+    "user_id": 3
   }
 ]

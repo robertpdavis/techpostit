@@ -13,11 +13,17 @@ const loginFormHandler = async (event) => {
       headers: { 'Content-Type': 'application/json' },
     });
 
+    const data = await response.json();
+
     if (response.ok) {
       // If successful, redirect the browser to the homepage
       document.location.replace('/');
     } else {
-      alert(response.statusText);
+      if (response.status === 400){
+        openModal("Login Error",data.message);
+      }else{
+        openModal("Server Error","");
+      }
     }
   }
 };
@@ -36,10 +42,16 @@ const signupFormHandler = async (event) => {
       headers: { 'Content-Type': 'application/json' },
     });
 
+    const data = await response.json();
+    
     if (response.ok) {
       document.location.replace('/');
     } else {
-      alert(response.statusText);
+      if (response.status === 400){
+        openModal("Signup Failed",data.message);
+      }else{
+        openModal("Server Error","");
+      }
     }
   }
 };

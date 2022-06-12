@@ -4,8 +4,8 @@ const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
   try {
-    const pageTitle = 'Tech Post It';
-    // Get all blogs and JOIN with user data
+    const pageTitle = 'Tech Post It!';
+    // Get all posts and JOIN with user data
     const postData = await Post.findAll({
       include: [
         {
@@ -13,6 +13,7 @@ router.get('/', async (req, res) => {
           attributes: ['username'],
         },
       ],
+      // Omits posts
       where: {
         is_deleted: false
       },
@@ -20,6 +21,7 @@ router.get('/', async (req, res) => {
         ['date_created', 'DESC'],
       ]
     });
+    
     // Serialize data so the template can read it
     const posts = postData.map((post) => post.get({ plain: true }));
 
@@ -158,7 +160,7 @@ router.get('/post/:id', withAuth, async (req, res) => {
     });
     const comments = commentData.map((comment) => comment.get({ plain: true }));
 
-    const pageTitle = 'Tech Post It';
+    const pageTitle = 'Tech Post It!';
 
     res.render('comment', {
       post,
@@ -178,7 +180,7 @@ router.get('/login', (req, res) => {
     res.redirect('/');
     return;
   }
-  const pageTitle = 'Tech Post It';
+  const pageTitle = 'Tech Post It!';
   res.render('login', { pageTitle });
 });
 
@@ -188,7 +190,7 @@ router.get('/signup', (req, res) => {
     res.redirect('/');
     return;
   }
-  const pageTitle = 'Tech Post It';
+  const pageTitle = 'Tech Post It!';
   res.render('signup', { pageTitle });
 });
 

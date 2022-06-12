@@ -1,4 +1,4 @@
-/* Weather Pro Style Sheet */
+/* Tech Post It! Style Sheet */
 
 /* Root variables for colour scheme */
 :root {
@@ -8,9 +8,12 @@
   --header-colour: #ffffff;
   --nav-colour: #ffffff;
   --hr-colour: #a9a9a9;
-  --border-colour: #000000;
-  --wcard-bg-colour: #172b38;
-  --uvindex-colour: #ffffff;
+  --card-header-bgcolor: #2d3e50;
+  --card-header-color: #1b89bc;
+  --header-span-color:#ffffff;
+  --button-bgcolor:#2d3e50;
+  --button-color: #d9e9e8;
+  --button-hoverbg: #14abb2;
 }
 
 html {
@@ -21,6 +24,7 @@ body {
   background-color: var(--body-background-col);
   width: 90%;
   margin: auto;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
 }
 
 /* Gradient for the header */
@@ -31,11 +35,13 @@ header {
   color: var(--header-colour);
   vertical-align: middle;
   margin-top: 1rem;
+  border-radius: 0.2rem;
 }
 
 header h1 {
   margin-bottom: 0.5rem;
   padding-left: 1rem;
+  padding-bottom: 1rem;
 }
 
 nav {
@@ -52,6 +58,7 @@ nav a {
   color: var(--header-colour);
   padding-left: 0.3rem;
   padding-right: 0.3rem;
+  text-decoration: none;
 }
 
 h1,
@@ -102,8 +109,33 @@ hr {
   margin-top: 0.5rem;
 }
 
+form .form-input {
+  width: 100%;
+  padding: 0.75rem;
+  color: #1a1a1a;
+  background-color: #ffffff;
+  margin: 0.625rem 0;
+  font-size: 1.2rem;
+  border: 1px solid #484848;
+  border-radius: 0.3rem;
+}
+
+.card-header {
+  background-color: var(--card-header-bgcolor);
+}
+
 .card-header h3 {
   display: block;
+  color: var(--card-header-color);
+}
+
+.card-header h3 a {
+  color: var(--card-header-color);
+}
+
+.card-header span {
+  color: var(--header-span-color);
+  float: right;
 }
 
 .comment-header {
@@ -112,15 +144,26 @@ hr {
 
 .post-header-span {
   font-size: 1rem;
+  color: var(--header-span-color);
 }
 
 .post-comment-span {
-  /* float: bottom; */
   font-style: italic;
 }
 
 .card-body {
   height: auto;
+}
+
+.btn.btn-primary {
+  background-color: var(--button-bgcolor);
+  color: var(--button-color);
+  border-color:transparent;
+}
+
+.btn.btn-primary:hover {
+  background-color: var(--button-hoverbg);
+
 }
 
 .no-button {
@@ -140,13 +183,17 @@ hr {
 
 .post-title-input {
   width: 100%;
-  min-height: 3rem;
+  min-height: 10rem;
 }
 
 .post-content-input {
   width: 100%;
   min-height: 6rem;
   margin-bottom: 1rem;
+}
+
+.post-buttons {
+  margin-bottom: 0.5rem;
 }
 
 .comment-form {
@@ -178,11 +225,6 @@ hr {
     margin-bottom: 1rem;
   }
 
-  /* .container {
-
-    margin: auto;
-  } */
-
   .card-header h3 {
     display: inline-block;
   }
@@ -198,5 +240,6 @@ hr {
 
   .post-title-input {
     min-width: 50rem;
-  }
+    min-height: 2rem;
+    }
 }

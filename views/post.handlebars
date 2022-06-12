@@ -3,18 +3,20 @@
 <div class="row justify-content-between">
   <div class="col-12">
     <form class="form post-form" data-postid="{{post.id}}">
-      <button class="btn btn-primary" type="button" id="update">Update</button>
-      <button class="btn btn-primary" type="button" id="delete">Delete</button>
+      <div class="post-buttons">
+        <button class="btn btn-primary" type="button" id="update">Update</button>
+        <button class="btn btn-primary" type="button" id="delete">Delete</button>
+      </div>
       <div class="card">
         <div class="card-header">
           <h3>
-            <input class="post-title-input" type="text" id="title" value="{{post.title}}" />
+            <textarea class="post-title-input" id="title">{{post.title}}</textarea>
           </h3>
           <span class="post-header-span">Posted {{format_date post.date_created}}</span>
         </div>
         <div class=" card-body">
           <p class="card-text">
-            <input class="post-content-input" type="text" id="content" value="{{post.content}}" />
+            <textarea class="post-content-input" id="content">{{post.content}}</textarea>
           </p>
         </div>
       </div>
@@ -63,7 +65,7 @@
           <label class="post-title-label" for="title">Title</label>
           <h3><input class="post-title-input" type="text" id="title" /></h3>
           <label class="post-content-label" for="content">Content</label>
-          <input class="post-content-input" type="text" id="content" />
+          <input class="post-content-input" type="text" id="content" required>
 
           <button class="btn btn-primary" type="submit">Submit</button>
         </div>

@@ -1,25 +1,25 @@
 [
   {
     "title": "Why MVC is so important",
-    "content": "MVC allows developers to maintain a true seperation of concerns",
+    "content": "MVC allows developers to maintain a true seperation of concerns, devising their code between the Model layer for data, the View layer for design, and the Controller layer for application logic.",
     "date_created": "2022-04-24",
     "user_id": 1
   },
   {
     "title": "Authentication vs. Authorisation",
-    "content": "There is a difference between autthentication and authorization.",
+    "content": "There is a difference between autthentication and authorization. Authentication means confirming your own identity, whereas authorization means being allowed access to the system.",
     "date_created": "2022-05-12",
     "user_id": 2
   },
   {
     "title": "Object-Relational Mapping",
-    "content": "I really loved learning about ORMs.",
+    "content": "I really loved learning about ORMs.It's really simplified the way I create queries in SQL!",
     "date_created": "2022-05-20",
     "user_id": 3
   },
   {
     "title": "Sequelise - Making MYSQL Easy",
-    "content": "Sequelize is a node npm ORM package making mysql database datahandling easy.",
+    "content": "Sequelize is a node npm ORM package making mysql database data handling easy.",
     "date_created": "2022-05-25",
     "user_id": 3
   }

@@ -13,13 +13,12 @@ const loginFormHandler = async (event) => {
       headers: { 'Content-Type': 'application/json' },
     });
 
-    const data = await response.json();
-
     if (response.ok) {
       // If successful, redirect the browser to the homepage
       document.location.replace('/');
     } else {
       if (response.status === 400){
+        const data = await response.json();
         openModal("Login Error",data.message);
       }else{
         openModal("Server Error","");
@@ -41,13 +40,12 @@ const signupFormHandler = async (event) => {
       body: JSON.stringify({ username, email, password }),
       headers: { 'Content-Type': 'application/json' },
     });
-
-    const data = await response.json();
     
     if (response.ok) {
       document.location.replace('/');
     } else {
       if (response.status === 400){
+        const data = await response.json();
         openModal("Signup Failed",data.message);
       }else{
         openModal("Server Error","");

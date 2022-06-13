@@ -2,6 +2,7 @@ const router = require('express').Router();
 const { Post, Comment } = require('../../models');
 const withAuth = require('../../utils/auth');
 
+//Create new post
 router.post('/', withAuth, async (req, res) => {
   try {
     const newPost = await Post.create({
@@ -15,6 +16,7 @@ router.post('/', withAuth, async (req, res) => {
   }
 });
 
+//Create new comment
 router.post('/comment', withAuth, async (req, res) => {
   try {
 
@@ -30,6 +32,7 @@ router.post('/comment', withAuth, async (req, res) => {
   }
 });
 
+//Update post
 router.put('/:id', async (req, res) => {
   try {
     const postData = await Post.update(req.body, {
@@ -39,15 +42,17 @@ router.put('/:id', async (req, res) => {
       },
     });
     if (!postData[0]) {
-      res.status(404).json({ message: 'No post found with this id!' });
+      res.status(404).json({ message: 'No post found with this id, or no update made!' });
       return;
     }
+
     res.status(200).json(postData);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
 });
 
+//Delete post
 router.delete('/:id', withAuth, async (req, res) => {
   try {
     const postData = await Post.update({ is_deleted: true }, {

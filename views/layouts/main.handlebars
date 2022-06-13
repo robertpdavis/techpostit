@@ -32,6 +32,9 @@
       <h1>
         {{pageTitle}}
       </h1>
+      {{#if logged_in}}
+        <span>Welcome {{user_name}}</span>
+      {{/if}}
     </header>
 
     <main class="container container-fluid mt-5">
@@ -46,11 +49,10 @@
               <div class="modal-content">
                   <div class="modal-header">
                     <h4 class="modal-title" id="modal-title">Modal title</h4>
-                    {{!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> --}}
                   </div>
                   <div class="modal-body" id="modal-body"></div>
                     <span class="align-top" id="modal-content"></span>
-                  <div class="modal-footer">
+                  <div class="modal-footer" id="footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="modal-close-btn">Close</button>
                   </div>
               </div>

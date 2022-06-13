@@ -3,14 +3,12 @@ const logout = async () => {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
   });
-
-  const data = await response.json();
-
+  //Logout and redirect to homepage
   if (response.ok) {
     document.location.replace('/');
   } else {
     if (response.status === 400){
-      openModal("Logout Failed",data.message);
+      openModal("Logout Failed");
     }else{
       openModal("Server Error","");
     }

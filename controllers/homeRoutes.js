@@ -2,6 +2,7 @@ const router = require('express').Router();
 const { Post, User, Comment } = require('../models');
 const withAuth = require('../utils/auth');
 
+//Homepage
 router.get('/', async (req, res) => {
   try {
     const pageTitle = 'Tech Post It!';
@@ -29,16 +30,18 @@ router.get('/', async (req, res) => {
     res.render('homepage', {
       pageTitle,
       posts,
-      logged_in: req.session.logged_in
+      logged_in: req.session.logged_in,
+      user_name: req.session.user_name,
     });
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
+//Dashboard for logged in users
 router.get('/dashboard', withAuth, async (req, res) => {
   try {
-    const pageTitle = 'Dashboard';
+    const pageTitle = 'My Dashboard';
     // Get all blogs and JOIN with user data
     const postData = await Post.findAll({
       include: [
@@ -63,13 +66,15 @@ router.get('/dashboard', withAuth, async (req, res) => {
     res.render('dashboard', {
       pageTitle,
       posts,
-      logged_in: req.session.logged_in
+      logged_in: req.session.logged_in,
+      user_name: req.session.user_name,
     });
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
+//Create post page
 router.get('/dashboard/create', withAuth, async (req, res) => {
   try {
     const pageTitle = 'Dashboard';
@@ -78,13 +83,15 @@ router.get('/dashboard/create', withAuth, async (req, res) => {
     res.render('post', {
       option,
       pageTitle,
-      logged_in: req.session.logged_in
+      logged_in: req.session.logged_in,
+      user_name: req.session.user_name,
     });
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
+//View user post for updating
 router.get('/dashboard/view/:id', withAuth, async (req, res) => {
   try {
     const postData = await Post.findByPk(req.params.id, {
@@ -124,7 +131,8 @@ router.get('/dashboard/view/:id', withAuth, async (req, res) => {
       post,
       pageTitle,
       comments,
-      logged_in: req.session.logged_in
+      logged_in: req.session.logged_in,
+      user_name: req.session.user_name,
     });
 
   } catch (err) {
@@ -132,6 +140,7 @@ router.get('/dashboard/view/:id', withAuth, async (req, res) => {
   }
 });
 
+//Get the comment add page for a post
 router.get('/post/:id', withAuth, async (req, res) => {
   try {
     const postData = await Post.findByPk(req.params.id, {
@@ -166,7 +175,8 @@ router.get('/post/:id', withAuth, async (req, res) => {
       post,
       pageTitle,
       comments,
-      logged_in: req.session.logged_in
+      logged_in: req.session.logged_in,
+      user_name: req.session.user_name,
     });
 
   } catch (err) {
@@ -174,6 +184,7 @@ router.get('/post/:id', withAuth, async (req, res) => {
   }
 });
 
+//User login page
 router.get('/login', (req, res) => {
   // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {
@@ -184,6 +195,7 @@ router.get('/login', (req, res) => {
   res.render('login', { pageTitle });
 });
 
+//User signup page
 router.get('/signup', (req, res) => {
   // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {

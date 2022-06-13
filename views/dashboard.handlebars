@@ -1,7 +1,8 @@
 <!-- Loop over each blog post in the blogs array -->
-{{#if posts.length}}
 {{#if logged_in}}
 <a href="/dashboard/create"><button class="btn btn-primary" type="button">Create Post</button></a>
+{{/if}}
+{{#if posts.length}}
 {{#each posts as |post| }}
 <div class="row justify-content-between">
   <div class="col-12">
@@ -10,14 +11,12 @@
         <h3>
           <a href="/dashboard/view/{{post.id}}">{{post.title}}</a>
         </h3>
-        <span class="post-header-span">Posted {{format_date post.date_created}}</span>
+        <span>Posted {{format_date post.date_created}}</span>
       </div>
-
     </div>
   </div>
 </div>
 {{/each}}
-{{/if}}
 {{else}}
 <h2>No posts to display.</h2>
 {{/if}}

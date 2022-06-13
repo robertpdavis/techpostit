@@ -38,6 +38,25 @@
       <!-- Render the sub layout -->
       {{{ body }}}
     </main>
+    <section>
+      <!-- Modal -->
+      <div class="modal fade" id="bsmodal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+          aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog">
+              <div class="modal-content">
+                  <div class="modal-header">
+                    <h4 class="modal-title" id="modal-title">Modal title</h4>
+                    {{!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> --}}
+                  </div>
+                  <div class="modal-body" id="modal-body"></div>
+                    <span class="align-top" id="modal-content"></span>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="modal-close-btn">Close</button>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </section>
     <footer>
 
     </footer>
@@ -47,6 +66,7 @@
   {{#if logged_in}}
   <script src="/js/logout.js"></script>
   {{/if}}
+  <script src="/js/script.js"></script>
 </body>
 
 </html>

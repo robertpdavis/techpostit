@@ -4,10 +4,16 @@ const logout = async () => {
     headers: { 'Content-Type': 'application/json' },
   });
 
+  const data = await response.json();
+
   if (response.ok) {
     document.location.replace('/');
   } else {
-    alert(response.statusText);
+    if (response.status === 400){
+      openModal("Logout Failed",data.message);
+    }else{
+      openModal("Server Error","");
+    }
   }
 };
 

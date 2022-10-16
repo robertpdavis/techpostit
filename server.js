@@ -17,7 +17,7 @@ const hbs = exphbs.create({ helpers });
 
 const sess = {
   // secret: process.env.SECRET,
-  secret: process.env.SECRET,
+  secret: process.env.SECRET || "SECRET123",
   cookie: {},
   resave: false,
   saveUninitialized: true,

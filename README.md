@@ -69,7 +69,7 @@ api routes
 - PUT /post/:id > update post
 - DELETE /post/:id > delete post
 
-Live website is available at Heroku: https://techpostit.herokuapp.com
+Live website is available on AWS at: https://techpostit.robpdavis.com.au 
 
 ## Credits
 Rob Davis Github: [robertpdavis](https://github.com/robertpdavis)
